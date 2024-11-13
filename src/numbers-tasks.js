@@ -50,15 +50,11 @@ function getCircleCircumference(radius) {
  *  -3, 3  => 0
  */
 function getAverage(value1, value2) {
-  if (
-    value1 === Infinity ||
-    value2 === Infinity ||
-    value1 === -Infinity ||
-    value2 === -Infinity
-  ) {
-    return NaN;
+  const average = (value1 + value2) / 2;
+  if (!Number.isFinite(average)) {
+    return value1;
   }
-  return (value1 + value2) / 2;
+  return average;
 }
 
 /**
