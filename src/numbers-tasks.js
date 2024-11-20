@@ -411,8 +411,10 @@ function toFixed(number, fractionDigits) {
  * 12345, 7    => '12345.00'
  * 12.345, 4   => '12.35'
  */
-function toPrecision(/* number, precision */) {
-  throw new Error('Not implemented');
+function toPrecision(number, precision) {
+  const arr = number.toString().split('.');
+  const dif = precision - arr[0].length;
+  return number.toFixed(dif);
 }
 
 /**
@@ -444,8 +446,8 @@ function getNumberValue(/* number */) {
  * 5        => true
  * '5'      => false
  */
-function isNumber(/* number */) {
-  throw new Error('Not implemented');
+function isNumber(number) {
+  return Number.isFinite(number);
 }
 
 /**
@@ -459,8 +461,11 @@ function isNumber(/* number */) {
  * 5.1  => false
  * '5'  => false
  */
-function isInteger(/* number */) {
-  throw new Error('Not implemented');
+function isInteger(number) {
+  if (typeof number === 'string') {
+    return false;
+  }
+  return number % Math.floor(number) === 0;
 }
 
 /**
